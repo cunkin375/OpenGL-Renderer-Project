@@ -40,7 +40,7 @@ Window::Window(WindowProperties& properties)
    glfwMakeContextCurrent(m_Handle);  
    if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))  
    {  
-       std::println("Failed to load GLAD!");  
+       std::println("Failed to load GLAD!");
        glfwDestroyWindow(m_Handle);  
        glfwTerminate();  
        return;  

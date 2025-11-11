@@ -1,7 +1,7 @@
- #pragma once
+#pragma once
 
-// VVV TEMP!!!! VVV
-#include "D:\dev\Renderer Project - Premake\OpenGL-Core\assets\models\triangle.h"
+#include "models/triangle.h"
+#include "models/rectangle.h"
 
 #include "Mesh.h"
 #include "Texture.h"

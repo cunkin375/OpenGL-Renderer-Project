@@ -1,5 +1,3 @@
-#pragma once
-
 #include "InputHandler.h"
 
 bool InputHandler::isKeyPressed(Window& window, GLint key)

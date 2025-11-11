@@ -1,8 +1,7 @@
 #include "Mesh.h"
 
-// VVV TEMP!!!! VVV
-#include "D:\dev\Renderer Project - Premake\OpenGL-Core\assets\models\triangle.h"
-#include "D:\dev\Renderer Project - Premake\OpenGL-Core\assets\models\rectangle.h"
+#include "models/triangle.h"
+#include "models/rectangle.h"
 
 Mesh::Mesh(std::vector<GLuint> indices, std::vector<GLfloat> vertices, Texture* texture)
 {
@@ -22,7 +21,7 @@ void Mesh::remove()
 void Mesh::render()
 {
 //  TRIANGLE
-//     glBindTexture(GL_TEXTURE_1D, m_Texture->getHandle());
+//  glBindTexture(GL_TEXTURE_1D, m_Texture->getHandle());
 //  RECTANGLE: CHECK AFTER TEXTURES ARE PUT INTO DYNAMIC ARRAY
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, m_Texture->getHandle1());
