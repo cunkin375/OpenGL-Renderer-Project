@@ -1,0 +1,8 @@
+.vs
+Renderer Project.sln
+binaries/intermediates/windows-x86_64/Debug/OpenGL-Core
+binaries/windows-x86_64/Debug/OpenGL-Core/OpenGL-Core.exe
+binaries/windows-x86_64/Debug/OpenGL-Core/OpenGL-Core.pdb
+OpenGL-Core/OpenGL-Core.vcxproj
+OpenGL-Core/OpenGL-Core.vcxproj.filters
+OpenGL-Core/OpenGL-Core.vcxproj.user
