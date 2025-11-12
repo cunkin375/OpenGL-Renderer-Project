@@ -4,11 +4,11 @@
 
 Window::Window(WindowProperties& properties)
     : m_Handle(nullptr)
+    , m_Properties(properties)
 {  
-   m_Properties = properties;  
    if (!glfwInit())  
    {  
-       // TODO: include logger macro to handle in util  
+       // TODO include logger macro to handle in util  
        std::println("GLFW couldn't start!");  
        return;  
    }
@@ -24,9 +24,9 @@ Window::Window(WindowProperties& properties)
    const GLFWvidmode* mode = glfwGetVideoMode(glfwGetPrimaryMonitor());  
    if (properties.Fullscreen)  
    {  
-       monitor = glfwGetPrimaryMonitor();  
-       properties.Width  = mode->width;  
-       properties.Height = mode->height;  
+       monitor = glfwGetPrimaryMonitor();
+       properties.Width  = mode->width;
+       properties.Height = mode->height;
        m_Properties = properties;  
    }
    m_Handle = glfwCreateWindow(properties.Width, properties.Height, properties.Title.c_str(), monitor, NULL);  

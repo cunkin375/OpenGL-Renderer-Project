@@ -7,7 +7,7 @@
 
 Shader::Shader(const char* vertexPath, const char* fragmentPath)
 {
-    std::string vertexCode = readShaderFile(vertexPath);
+    std::string vertexCode   = readShaderFile(vertexPath);
     std::string fragmentCode = readShaderFile(fragmentPath);
     startVertexShader(vertexCode.c_str());
     startFragmentShader(fragmentCode.c_str());
@@ -56,7 +56,7 @@ void Shader::checkCompileErrors(GLuint shader, std::string type)
         if (!compileSuccess)
         {
             glGetProgramInfoLog(shader, 1024, NULL, consoleLog);
-            std::println("ERROR:PROGRAM_LINKING_ERROR::");
+            std::println("ERROR::PROGRAM_LINKING_ERROR::");
             std::cout << consoleLog << std::endl;
         }
     }

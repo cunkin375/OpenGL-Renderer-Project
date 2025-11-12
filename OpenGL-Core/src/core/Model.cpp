@@ -22,7 +22,7 @@ Model::Model(const char* path)
     //    vertices.emplace_back(triangleVertices[i]);  
     //}
 
-    // ONLY USED TO BE PASSED INTO MESH CONSTRUCTOR, NOT USED IN RENDERING MESH
+    // NOTE: ONLY USED TO BE PASSED INTO MESH CONSTRUCTOR, NOT USED IN RENDERING MESH
     std::vector<GLuint> indices   = { 3, 2, 1 };
     std::vector<GLfloat> vertices = { 3, 3, 5 };
 
