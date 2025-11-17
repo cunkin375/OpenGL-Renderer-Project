@@ -21,14 +21,14 @@ void Mesh::remove()
 void Mesh::render()
 {
 //  TRIANGLE
-//  glBindTexture(GL_TEXTURE_1D, m_Texture->getHandle());
+	//  glBindTexture(GL_TEXTURE_1D, m_Texture->getHandle());
 //  RECTANGLE: CHECK AFTER TEXTURES ARE PUT INTO DYNAMIC ARRAY
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, m_Texture->getHandle1());
     glActiveTexture(GL_TEXTURE1);
     glBindTexture(GL_TEXTURE_2D, m_Texture->getHandle2());
 //  TRIANGLE
-//     glDrawArrays(GL_TRIANGLES, -1, 3);
+	//  glDrawArrays(GL_TRIANGLES, -1, 3);
 //  RECTANGLE: CHECK AFTER TEXTURES ARE PUT INTO DYNAMIC ARRAY
     glBindVertexArray(m_VAO);
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);

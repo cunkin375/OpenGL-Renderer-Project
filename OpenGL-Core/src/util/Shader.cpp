@@ -48,7 +48,7 @@ void Shader::use()
 
 void Shader::checkCompileErrors(GLuint shader, std::string type)
 {
-    GLint  compileSuccess;
+    GLint  compileSuccess; // compile success cannot be a bool (C-based library)
     GLchar consoleLog[1024];
     if (type == "PROGRAM")
     {
@@ -57,7 +57,7 @@ void Shader::checkCompileErrors(GLuint shader, std::string type)
         {
             glGetProgramInfoLog(shader, 1024, NULL, consoleLog);
             std::println("ERROR::PROGRAM_LINKING_ERROR::");
-            std::cout << consoleLog << std::endl;
+            std::println("%s", consoleLog);
         }
     }
     else // type == Some Component 
@@ -67,7 +67,7 @@ void Shader::checkCompileErrors(GLuint shader, std::string type)
         {
             glGetShaderInfoLog(shader, 1024, NULL, consoleLog);
             std::println("ERROR::SHADER_COMPILATION_ERROR::");
-            std::cout << consoleLog << std::endl;
+            std::println("%s", consoleLog);
         }
     }
 }
@@ -87,6 +87,7 @@ void Shader::startShaderProgram()
     glAttachShader(m_ProgramID, m_FragmentShader);
     glLinkProgram(m_ProgramID);
     checkCompileErrors(m_ProgramID, "PROGRAM");
+    // shader components must be deleted upon starting shader program
     glDeleteShader(m_VertexShader);
     glDeleteShader(m_FragmentShader);
 }

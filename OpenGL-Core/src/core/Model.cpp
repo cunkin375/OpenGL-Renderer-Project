@@ -1,9 +1,10 @@
 #include "Model.h"
 
 #include <glad.h>
-#include <print>
 #include <glm.hpp>
 #include <gtc/matrix_transform.hpp>
+#include <algorithm>
+#include <ranges>
 
 Model::Model(const char* path)
 {    
@@ -38,18 +39,11 @@ Model::Model(const char* path)
 
 void Model::render()
 {
-    for (auto& mesh : m_Meshes)
-        mesh.render();
+	std::ranges::for_each(m_Meshes, [](auto& mesh) { mesh.render(); });
 }
 
 void Model::remove()
 {
-    for (auto& mesh : m_Meshes)
-    {
-        mesh.remove();
-    }
-    for(auto& texture : m_Textures)
-    {
-        texture.remove();
-    }
+	std::ranges::for_each(m_Meshes,   [](auto& mesh)    { mesh.remove(); });
+	std::ranges::for_each(m_Textures, [](auto& texture) { texture.remove(); });
 }
