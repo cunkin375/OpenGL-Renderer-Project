@@ -6,3 +6,6 @@ binaries/windows-x86_64/Debug/OpenGL-Core/OpenGL-Core.pdb
 OpenGL-Core/OpenGL-Core.vcxproj
 OpenGL-Core/OpenGL-Core.vcxproj.filters
 OpenGL-Core/OpenGL-Core.vcxproj.user
+OpenGL-Core/assets/shaders/460.sierpinski_fragment.glsl
+OpenGL-Core/assets/shaders/460.sierpinski_vetex.glsl
+OpenGL-Core/SierpinskiGasket.h
