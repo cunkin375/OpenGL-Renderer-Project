@@ -9,3 +9,5 @@ OpenGL-Core/OpenGL-Core.vcxproj.user
 OpenGL-Core/assets/shaders/460.sierpinski_fragment.glsl
 OpenGL-Core/assets/shaders/460.sierpinski_vetex.glsl
 OpenGL-Core/SierpinskiGasket.h
+.cache/clangd/index
+compile_commands.json
