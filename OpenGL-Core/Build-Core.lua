@@ -5,9 +5,9 @@ project "OpenGL-Core"
    targetdir "Binaries/%{cfg.buildcfg}"
    staticruntime "off"
 
-   files 
-   { 
-	   "src/**.h", 
+   files
+   {
+	   "src/**.h",
 	   "src/**.cpp",
 	   "vendor/**.h",
 	   "vendor/**.hpp",
@@ -32,9 +32,9 @@ project "OpenGL-Core"
 
    libdirs { "libs" }
 
-   links 
-   { 
-	    "glfw3", 
+   links
+   {
+	    "glfw3",
 	    "opengl32",
    }
 
