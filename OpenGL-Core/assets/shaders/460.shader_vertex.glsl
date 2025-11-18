@@ -1,8 +1,7 @@
 #version 460 core
 
 layout(location = 0) in vec3 aPos; // position variable has attribute 0
-layout(location = 2) in vec2 aTexCoord; // texture coordinate variable has attribute 2
-                                        //
+layout(location = 1) in vec2 aTexCoord; // texture coordinate variable has attribute 2
 
 uniform mat4 model;
 uniform mat4 view;
