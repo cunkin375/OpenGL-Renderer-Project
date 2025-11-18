@@ -16,8 +16,8 @@ public:
 	void render();
 
 private:
-	Model  m_Model;
 	Shader m_Shader;
+	Model  m_Model;
 	Camera m_Camera;
 
 

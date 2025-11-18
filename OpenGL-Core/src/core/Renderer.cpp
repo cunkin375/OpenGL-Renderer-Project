@@ -22,7 +22,9 @@ Renderer::~Renderer()
 void Renderer::render()
 {
     m_Camera.update();
+    m_Model.update();
     m_Shader.use();
-    m_Camera.transform(m_Shader.getTransformLocation());
+    m_Camera.transform(m_Shader.getShaderProgram());
+    m_Model.transform(m_Shader.getShaderProgram());
     m_Model.render();
 }
