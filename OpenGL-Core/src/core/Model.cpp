@@ -3,6 +3,7 @@
 #include <glad.h>
 #include <glm.hpp>
 #include <gtc/matrix_transform.hpp>
+#include <gtc/type_ptr.hpp>
 #include <algorithm>
 
 Model::Model(const char* path)
@@ -41,8 +42,20 @@ void Model::render()
 	std::ranges::for_each(m_Meshes, [](auto& mesh) { mesh.render(); });
 }
 
+void Model::update()
+{
+    m_ModelMatrix = glm::mat4{1.0f};
+    m_ModelMatrix = glm::rotate(m_ModelMatrix, glm::radians(-55.0f), glm::vec3{1.0f, 0.0f, 0.0f});
+}
+
+void Model::transform(GLuint programID)
+{
+    GLuint modelMatrixLoc = glGetUniformLocation(programID, "model");
+    glUniformMatrix4fv(modelMatrixLoc, 1, GL_FALSE, glm::value_ptr(m_ModelMatrix));
+}
+
 void Model::remove()
 {
-	std::ranges::for_each(m_Meshes,   [](auto& mesh)    { mesh.remove(); });
+	std::ranges::for_each(m_Meshes,   [](auto& mesh)       { mesh.remove(); });
 	std::ranges::for_each(m_Textures, [](auto& texture) { texture.remove(); });
 }
