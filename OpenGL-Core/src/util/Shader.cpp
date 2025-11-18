@@ -12,7 +12,6 @@ Shader::Shader(const char* vertexPath, const char* fragmentPath)
     startVertexShader(vertexCode.c_str());
     startFragmentShader(fragmentCode.c_str());
     startShaderProgram();
-    m_TransformLocation = glGetUniformLocation(m_ProgramID, "uTransform");
 }
 
 std::string Shader::readShaderFile(const char* filepath)
@@ -43,7 +42,6 @@ void Shader::remove()
 void Shader::use()
 {
     glUseProgram(m_ProgramID);
-    m_TransformLocation = glGetUniformLocation(m_ProgramID, "uTransform");
 }
 
 void Shader::checkCompileErrors(GLuint shader, std::string type)

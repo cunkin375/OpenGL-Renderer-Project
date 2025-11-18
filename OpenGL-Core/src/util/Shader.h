@@ -3,8 +3,6 @@
 #include <glad.h>
 #include <string>
 
-#include "glm.hpp"
-
 class Shader
 {
 public:
@@ -16,7 +14,7 @@ public:
     void use();
     void setInt(const std::string& name, GLint value) const;
 
-    inline const GLuint getTransformLocation() { return m_TransformLocation; }
+    inline const GLuint getShaderProgram() { return m_ProgramID; }
 
 private:
     void checkCompileErrors(GLuint shader, std::string type);
@@ -27,7 +25,6 @@ private:
 private:
     GLuint m_ProgramID;
     GLuint m_VertexShader, m_FragmentShader;
-    GLuint m_TransformLocation;
 
 
 };
