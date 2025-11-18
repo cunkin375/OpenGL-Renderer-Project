@@ -1,8 +1,5 @@
 #pragma once
 
-#include "models/triangle.h"
-#include "models/rectangle.h"
-
 #include "Mesh.h"
 #include "Texture.h"
 

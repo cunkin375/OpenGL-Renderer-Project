@@ -6,7 +6,6 @@
 #include "util/Camera.h"
 
 #include <glad.h>
-#include <memory>
 
 class Renderer 
 {

@@ -8,7 +8,7 @@ struct WindowProperties
 {
     std::string Title;
     bool        Fullscreen;
-    GLuint		Width, Height;
+    GLuint      Width, Height;
 
     WindowProperties(const std::string& title = "Project Window",
                      bool   fullscreen = false,

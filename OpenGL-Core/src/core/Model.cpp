@@ -4,7 +4,6 @@
 #include <glm.hpp>
 #include <gtc/matrix_transform.hpp>
 #include <algorithm>
-#include <ranges>
 
 Model::Model(const char* path)
 {    
@@ -24,7 +23,7 @@ Model::Model(const char* path)
     //}
 
     // NOTE: ONLY USED TO BE PASSED INTO MESH CONSTRUCTOR, NOT USED IN RENDERING MESH
-    std::vector<GLuint> indices   = { 3, 2, 1 };
+    std::vector<GLuint>  indices  = { 3, 2, 1 };
     std::vector<GLfloat> vertices = { 3, 3, 5 };
 
     //std::println("Model created with {} indices", indices.size());

@@ -1,8 +1,6 @@
 #include "Application.h"
 #include "InputHandler.h"
 
-#include <print>
-
 Application::Application() 
 {
     WindowProperties properties{};
