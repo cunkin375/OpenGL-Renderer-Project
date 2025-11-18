@@ -29,7 +29,7 @@ std::string Shader::readShaderFile(const char* filepath)
     }
     catch (std::ifstream::failure e)
     {
-        std::println("ERROR::SHADER::FILE_NOT_SUCCESSFULLY_READ");
+        std::println(stderr, "ERROR::SHADER::FILE_NOT_SUCCESSFULLY_READ");
     }
     return shaderCode;
 }
@@ -54,8 +54,8 @@ void Shader::checkCompileErrors(GLuint shader, std::string type)
         if (!compileSuccess)
         {
             glGetProgramInfoLog(shader, 1024, NULL, consoleLog);
-            std::println("ERROR::PROGRAM_LINKING_ERROR::");
-            std::println("%s", consoleLog);
+            std::println(stderr, "ERROR::PROGRAM_LINKING_ERROR::");
+            std::println(stderr, "%s", consoleLog);
         }
     }
     else // type == Some Component 
@@ -64,8 +64,8 @@ void Shader::checkCompileErrors(GLuint shader, std::string type)
         if (!compileSuccess)
         {
             glGetShaderInfoLog(shader, 1024, NULL, consoleLog);
-            std::println("ERROR::SHADER_COMPILATION_ERROR::");
-            std::println("%s", consoleLog);
+            std::println(stderr, "ERROR::SHADER_COMPILATION_ERROR::");
+            std::println(stderr, "%s", consoleLog);
         }
     }
 }
