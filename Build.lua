@@ -17,4 +17,4 @@ workspace "Renderer Project"
    IncludeDir["stb"]  = "vendor/stb/include"
    IncludeDir["glm"]  = "vendor/glm/include"
 
-   include "OpenGL-Core/Build-Core.lua" 
+   include "OpenGL-Core/Build-Core.lua"
