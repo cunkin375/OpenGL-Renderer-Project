@@ -15,6 +15,7 @@ public:
 
 private:
 	void genArraysBuffers();
+    void initCubeMesh();
 	void initTriangleMesh();
 	void initRectangleMesh();
 
