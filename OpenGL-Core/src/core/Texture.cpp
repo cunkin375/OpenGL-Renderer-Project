@@ -5,7 +5,7 @@
 #include <print>
 
 Texture::Texture() // member values passed into constructor, remove lambda init once implimented
-    : m_Handle1(0), m_Handle2(0), m_Width(0), m_Height(0)
+    : m_Width(0), m_Height(0), m_Handle1(0), m_Handle2(0)
 {
     /* 
      * CODE SUCKS, TEXTURES SHOULD BE HANDLED THROUGH A DYNAMIC ARRAY
@@ -26,8 +26,7 @@ Texture::Texture() // member values passed into constructor, remove lambda init 
     unsigned char* data = stbi_load("assets/textures/container.jpg", &width, &height, &colorChannels, 0);
     if (!data) 
     { 
-        std::println("FAILED to load container texture data!");
-        return;
+        std::println(stderr, "FAILED to load container texture data!");
     }
     // link texture to bound mesh using texture data
     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
@@ -45,8 +44,7 @@ Texture::Texture() // member values passed into constructor, remove lambda init 
     data = stbi_load("assets/textures/awesomeface.png", &width, &height, &colorChannels, 0);
     if (!data)
     {
-        std::println("FAILED to load awesomeface texture data!");
-        return;
+        std::println(stderr, "FAILED to load awesomeface texture data!");
     }
     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
     glGenerateMipmap(GL_TEXTURE_2D);

@@ -40,13 +40,14 @@ Window::Window(WindowProperties& properties)
    glfwMakeContextCurrent(m_Handle);  
    if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))  
    {  
-       std::println("Failed to load GLAD!");
-       glfwDestroyWindow(m_Handle);  
-       glfwTerminate();  
-       return;  
+        std::println("Failed to load GLAD!");
+        glfwDestroyWindow(m_Handle);  
+        glfwTerminate();  
+        return;  
    }
    glfwSetFramebufferSizeCallback(m_Handle, framebufferSizeCallback); // yells at you for using any uint  
    glViewport(0, 0, properties.Width, properties.Height);  
+   glEnable(GL_DEPTH_TEST);
 } // end Window constructor
 
 Window::~Window()
@@ -57,7 +58,7 @@ Window::~Window()
 
 void Window::clear() 
 {
-    glClear(GL_COLOR_BUFFER_BIT);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 } 
 
 void Window::close()

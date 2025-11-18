@@ -1,4 +1,5 @@
 #include "Model.h"
+#include "glfw3.h"
 
 #include <glad.h>
 #include <glm.hpp>
@@ -45,7 +46,7 @@ void Model::render()
 void Model::update()
 {
     m_ModelMatrix = glm::mat4{1.0f};
-    m_ModelMatrix = glm::rotate(m_ModelMatrix, glm::radians(-55.0f), glm::vec3{1.0f, 0.0f, 0.0f});
+    m_ModelMatrix = glm::rotate(m_ModelMatrix, (GLfloat)glfwGetTime() * glm::radians(50.0f), glm::vec3{0.5f, 1.0f, 0.0f});
 }
 
 void Model::transform(GLuint programID)
