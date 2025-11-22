@@ -5,6 +5,15 @@
 
 class Shader
 {
+    using ProgramIndex   = GLuint;
+    using ComponentIndex = GLuint;
+
+    enum class ShaderType : GLuint
+    {
+        PROGRAM = 0,
+        COMPONENT
+    };
+
 public:
     Shader(const char* vertexPath, const char* fragmentPath);
     Shader() = default;
@@ -12,19 +21,19 @@ public:
     std::string readShaderFile(const char* filepath);
     void remove();
     void use();
-    void setInt(const std::string& name, GLint value) const;
+    void setInt(const std::string& name, size_t index);
 
     inline const GLuint getShaderProgram() { return m_ProgramID; }
 
 private:
-    void checkCompileErrors(GLuint shader, std::string type);
+    void checkCompileErrors(GLuint shaderIndex, ShaderType typeEnum);
     void startVertexShader(const char* vShaderCode);
     void startFragmentShader(const char* vFragmentCode);
     void startShaderProgram();
 
 private:
-    GLuint m_ProgramID;
-    GLuint m_VertexShader, m_FragmentShader;
+    ProgramIndex m_ProgramID;
+    ComponentIndex m_VertexShader, m_FragmentShader;
 
 
 };

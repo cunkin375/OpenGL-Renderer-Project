@@ -5,8 +5,8 @@
 #include <gtc/matrix_transform.hpp>
 
 Renderer::Renderer(const WindowProperties& windowProp)
-    : m_Shader("assets/shaders/460.shader_vertex.glsl", "assets/shaders/460.shader_fragment.glsl")
-    , m_Model("test")
+    : m_Shader{"assets/shaders/460.shader_vertex.glsl", "assets/shaders/460.shader_fragment.glsl"}
+    , m_Model{"test"}
 {
     m_Shader.use();
     m_Shader.setInt("texture1", 0);
@@ -21,7 +21,6 @@ Renderer::~Renderer()
 
 void Renderer::render()
 {
-    m_Shader.use();
     m_Camera.update();
     m_Model.update();
     m_Camera.transform(m_Shader.getShaderProgram());
