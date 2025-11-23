@@ -14,15 +14,32 @@
 
 class Camera
 {
+    friend class CameraController;
+
+    typedef struct CameraProperties 
+    {
+        float translationSpeed = 0.05f;
+
+        glm::vec3 position { 0.0f, 0.0f, 3.0f };
+        glm::vec3 target   { 0.0f,  0.0f,  0.0f };
+        glm::vec3 up       { 0.0f,  1.0f,  0.0f };
+        glm::vec3 front    { 0.0f,  1.0f, -1.0f };
+
+        glm::mat4 view = glm::lookAt(position, target, up);
+        glm::mat4 projection { 1.0f };
+        glm::vec3 direction { glm::normalize(position - target) };
+
+        glm::vec3 right { glm::normalize(glm::cross(up, direction)) };
+        glm::vec3 actualUp { glm::cross(direction, right) };
+
+    } Properties;
+
 public:
     void update();
     void transform(GLuint programID);
 
-    inline const glm::mat4 getProjection() { return m_Projection; }
-    inline const glm::mat4 getView()       { return m_View; }
-
  private:
-    glm::mat4 m_View {1.0f};
-    glm::mat4 m_Projection {1.0f};
+    Properties m_CamProps;
+
 
 };
