@@ -13,6 +13,8 @@ Shader::Shader(const char* vertexPath, const char* fragmentPath)
     startVertexShader(vertexCode.c_str());
     startFragmentShader(fragmentCode.c_str());
     startShaderProgram();
+    glDeleteShader(m_VertexShader);
+    glDeleteShader(m_FragmentShader);
 }
 
 std::string Shader::readShaderFile(const char* filepath)
@@ -46,33 +48,33 @@ void Shader::use()
     glUseProgram(m_ProgramID);
 }
 
-void Shader::checkCompileErrors(GLuint shaderIndex, ShaderType typeEnum)
+void Shader::checkCompileErrors(size_t shaderIndex, ShaderType typeEnum)
 {
     constexpr size_t c_BufferSize = 1024;
     GLint  compileSuccess; // compile success cannot be a bool (C-based library)
     GLchar consoleLog[c_BufferSize];
+
     switch (typeEnum) 
     {
-    case ShaderType::PROGRAM:
-        glGetProgramiv(shaderIndex, GL_LINK_STATUS, &compileSuccess);
-        if (!compileSuccess)
-        {
-            glGetProgramInfoLog(shaderIndex, c_BufferSize, NULL, consoleLog);
-            std::println(stderr, "ERROR::PROGRAM_LINKING_ERROR::");
-            std::println(stderr, "%s", consoleLog);
-        }
-        break;
-    case ShaderType::COMPONENT:
-        glGetShaderiv(shaderIndex, GL_COMPILE_STATUS, &compileSuccess);
-        if (!compileSuccess)
-        {
-            glGetShaderInfoLog(shaderIndex, c_BufferSize, NULL, consoleLog);
-            std::println(stderr, "ERROR::SHADER_COMPILATION_ERROR::");
-            std::println(stderr, "%s", consoleLog);
-        }
-        break;
-    default:
-        std::println(stderr, "ERROR::UNKNOWN_SHADER_TYPE::");
+        case ShaderType::PROGRAM:
+            glGetProgramiv(shaderIndex, GL_LINK_STATUS, &compileSuccess);
+            if (!compileSuccess)
+            {
+                glGetProgramInfoLog(shaderIndex, c_BufferSize, NULL, consoleLog);
+                std::println(stderr, "ERROR::PROGRAM_LINKING_ERROR::");
+                std::println(stderr, "%s", consoleLog);
+            }
+            break;
+        case ShaderType::COMPONENT:
+            glGetShaderiv(shaderIndex, GL_COMPILE_STATUS, &compileSuccess);
+            if (!compileSuccess)
+            {
+                glGetShaderInfoLog(shaderIndex, c_BufferSize, NULL, consoleLog);
+                std::println(stderr, "ERROR::SHADER_COMPILATION_ERROR::");
+                std::println(stderr, "%s", consoleLog);
+            }
+            break;
+        default: std::println(stderr, "ERROR::UNKNOWN_SHADER_TYPE::");
     }
 }
 
@@ -91,9 +93,6 @@ void Shader::startShaderProgram()
     glAttachShader(m_ProgramID, m_FragmentShader);
     glLinkProgram(m_ProgramID);
     checkCompileErrors(m_ProgramID, ShaderType::PROGRAM);
-    // shader components must be deleted upon starting shader program
-    glDeleteShader(m_VertexShader);
-    glDeleteShader(m_FragmentShader);
 }
 
 void Shader::startVertexShader(const char* vShaderCode)

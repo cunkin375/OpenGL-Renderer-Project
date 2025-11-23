@@ -5,8 +5,8 @@
 
 class Shader
 {
-    using ProgramIndex   = GLuint;
-    using ComponentIndex = GLuint;
+    using ProgramIndex   = size_t;
+    using ComponentIndex = size_t;
 
     enum class ShaderType : GLuint
     {
@@ -26,13 +26,13 @@ public:
     inline const GLuint getShaderProgram() { return m_ProgramID; }
 
 private:
-    void checkCompileErrors(GLuint shaderIndex, ShaderType typeEnum);
+    void checkCompileErrors(size_t shaderIndex, ShaderType typeEnum);
     void startVertexShader(const char* vShaderCode);
     void startFragmentShader(const char* vFragmentCode);
     void startShaderProgram();
 
 private:
-    ProgramIndex m_ProgramID;
+    ProgramIndex   m_ProgramID;
     ComponentIndex m_VertexShader, m_FragmentShader;
 
 
