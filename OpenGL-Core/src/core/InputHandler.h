@@ -24,6 +24,26 @@ namespace InputHandler
         return glfwGetMouseButton(window.getHandle(), button) == GLFW_RELEASE;
     }
 
+    inline bool isWPressed(const Window& window)
+    {
+        return glfwGetInputMode(window.getHandle(), GLFW_KEY_W) == GLFW_PRESS;
+    }
+
+    inline bool isSPressed(const Window& window)
+    {
+        return glfwGetInputMode(window.getHandle(), GLFW_KEY_S) == GLFW_PRESS;
+    }
+
+    inline bool isAPressed(const Window& window)
+    {
+        return glfwGetInputMode(window.getHandle(), GLFW_KEY_A) == GLFW_PRESS;
+    }
+
+    inline bool isDPressed(const Window& window)
+    {
+        return glfwGetInputMode(window.getHandle(), GLFW_KEY_D) == GLFW_PRESS;
+    }
+
     inline void setMousePos(const Window& window, GLdouble xPos, GLdouble yPos)
     {
         glfwSetCursorPos(window.getHandle(), xPos, yPos);
