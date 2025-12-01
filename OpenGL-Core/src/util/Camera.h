@@ -1,7 +1,5 @@
 #pragma once
 
-#include "core/Window.h"
-
 #include <glad.h>
 #include <glm.hpp>
 #include <gtc/matrix_transform.hpp>
@@ -20,7 +18,7 @@ class Camera
     {
         float translationSpeed = 0.05f;
 
-        glm::vec3 position { 0.0f, 0.0f, 3.0f };
+        glm::vec3 position { 0.0f,  0.0f,  3.0f };
         glm::vec3 target   { 0.0f,  0.0f,  0.0f };
         glm::vec3 up       { 0.0f,  1.0f,  0.0f };
         glm::vec3 front    { 0.0f,  1.0f, -1.0f };
